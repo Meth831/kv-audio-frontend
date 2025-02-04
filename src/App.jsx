@@ -2,6 +2,9 @@ import { BrowserRouter, Route,Routes } from 'react-router-dom';
 import './App.css'
 import AdminPage from './pages/admin/Adminpage';
 import HomePage from './pages/home/homePage';
+import Testing from './components/testing';
+import LoginPage from './pages/login/login';
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -9,7 +12,10 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Toaster position="top-right"></Toaster>
       <Routes path="/*">
+        <Route path="/testing" element={<Testing/>}/>
+        <Route path="/login" element={<LoginPage/>}/>
         <Route path ="/admin/*" element={<AdminPage/>}/>
         {/*'admin/*' මෙසේ යොදා ඇත්තෙ admin ලෙස url එකේ සදහන් කර එතනින් පස්සෙ ගහන
         ඔනෑම අදාල නැති url වලින් එන අයට මුලින්ම admin page එක පෙන්නීම */}
