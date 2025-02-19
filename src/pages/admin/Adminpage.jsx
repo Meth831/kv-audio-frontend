@@ -5,6 +5,7 @@ import { PiBookmarkSimpleBold } from "react-icons/pi";
 import { Link, Routes, Route } from 'react-router-dom';
 import AdminItemsPage from "./adminItemsPage";
 import AddItemPage from "./addItemPage";
+import UpdateItemPage from "./updateItmPage";
 
 
 
@@ -36,6 +37,7 @@ export default function AdminPage() {
           <Route path="/bookings" element={<h2>Bookings</h2>} />
           <Route path="/items" element={<AdminItemsPage/>}/>
           <Route path="/items/add" element={<AddItemPage/>}/>
+          <Route path="/items/edit" element={<UpdateItemPage/>}/>
         </Routes>
 
       </div>
