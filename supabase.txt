@@ -1,0 +1,2 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN5bHJtYmR1ZWlvenVlbnNybWZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk5NzU1MTQsImV4cCI6MjA1NTU1MTUxNH0._aMrTo4vVmcghOtKVOyNCD0NIn_Jap-u7Pz7NQ6nq4Y          //anon public key
+https://cylrmbdueiozuensrmfc.supabase.co   // projet url
