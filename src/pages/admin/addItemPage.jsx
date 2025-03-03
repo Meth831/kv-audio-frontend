@@ -10,9 +10,22 @@ export default function AddItemPage() {
 	const [productCategory, setProductCategory] = useState("audio");
 	const [productDimensions, setProductDimensions] = useState("");
 	const [productDescription, setProductDescription] = useState("");
+	const [productImages, setProductImages] = useState([]);
     const navigate = useNavigate()
 
 	async function handleAddItem() {
+		const promises = [];
+
+		for (let i = 0; i < productImages.length; i++) {
+			console.log(productImages[i]);
+			const promise = mediaUpload(productImages[i]);
+			promises.push(promise);
+			// if(i ==5){
+			// 	toast.error("You can only upload 25 images at a time");
+			// 	break;
+			// }
+		}
+
 		console.log(
 			productKey,
 			productName,
@@ -25,6 +38,17 @@ export default function AddItemPage() {
 
 		if (token) {
 			try {
+
+				// Promise.all(promises)
+				// 	.then((result) => {
+				// 		console.log(result);
+				// 	})
+				// 	.catch((err) => {
+				// 		toast.error(err);
+				// 	});
+
+				const imageUrls = await Promise.all(promises);
+
 				const result = await axios.post(
 					`${import.meta.env.VITE_BACKEND_URL}/api/products`,
 					{
@@ -34,6 +58,7 @@ export default function AddItemPage() {
 						category: productCategory,
 						dimensions: productDimensions,
 						description: productDescription,
+						image : imageUrls,
 					},
 					{
 						headers: {
@@ -97,6 +122,14 @@ export default function AddItemPage() {
 					placeholder="Product Description"
 					value={productDescription}
 					onChange={(e) => setProductDescription(e.target.value)}
+					className="w-full p-2 border rounded"
+				/>
+				<input
+					type="file"
+					multiple
+					onChange={(e) => {
+						setProductImages(e.target.files);
+					}}
 					className="w-full p-2 border rounded"
 				/>
 				<button
