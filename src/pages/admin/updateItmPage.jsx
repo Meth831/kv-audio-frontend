@@ -13,11 +13,30 @@ export default function UpdateItemPage() {
 	const [productCategory, setProductCategory] = useState(location.state.category);
 	const [productDimensions, setProductDimensions] = useState(location.state.dimensions);
 	const [productDescription, setProductDescription] = useState(location.state.desctiption);
+	const [productImages, setProductImages] = useState([]);
     const navigate = useNavigate()
     
 
     
-	async function handleAddItem() {
+	async function handleUpdateItem() {
+
+		let updatingImages = location.state.image
+
+		if (productImages.length > 0) {
+			const promises = [];
+
+			
+			for (let i = 0; i < productImages.length; i++) {
+				console.log(productImages[i]);
+				const promise = mediaUpload(productImages[i]);
+				promises.push(promise);
+				
+			}
+
+			updatingImages = await Promise.all(promises);
+
+		}
+
 		console.log(
 			productKey,
 			productName,
@@ -39,6 +58,7 @@ export default function UpdateItemPage() {
 						category: productCategory,
 						dimensions: productDimensions,
 						description: productDescription,
+						image : updatingImages
 					},
 					{
 						headers: {
@@ -105,8 +125,16 @@ export default function UpdateItemPage() {
 					onChange={(e) => setProductDescription(e.target.value)}
 					className="w-full p-2 border rounded"
 				/>
+				<input
+					type="file"
+					multiple
+					onChange={(e) => {
+						setProductImages(e.target.files);
+					}}
+					className="w-full p-2 border rounded"
+				/>
 				<button
-					onClick={handleAddItem}
+					onClick={handleUpdateItem}
 					className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
 				>
 					Update item

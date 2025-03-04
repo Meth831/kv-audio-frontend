@@ -58,7 +58,7 @@ export default function AddItemPage() {
 						category: productCategory,
 						dimensions: productDimensions,
 						description: productDescription,
-						image : imageUrls,
+						image : imageUrls
 					},
 					{
 						headers: {
