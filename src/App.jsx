@@ -6,6 +6,7 @@ import Testing from './components/testing';
 import LoginPage from './pages/login/login';
 import { Toaster } from 'react-hot-toast';
 import RegisterPage from '../register/register';
+import BookingPage from './pages/home/bookingPage';
 
 
 
@@ -21,6 +22,7 @@ function App() {
         {/*'admin/*' මෙසේ යොදා ඇත්තෙ admin ලෙස url එකේ සදහන් කර එතනින් පස්සෙ ගහන
         ඔනෑම අදාල නැති url වලින් එන අයට මුලින්ම admin page එක පෙන්නීම */}
         <Route path="/register" element={<RegisterPage/>}/>
+        <Route path="/cart" element={<BookingPage/>}/>
         
         <Route path = "/*" element={<HomePage/>}/> {/* home එකේ url එකෙන් පස්සෙ ගහන අනිත් ඕනෑම අදාල නැති url වලින් එන අයට මුලින්ම home page එක පෙන්නීම*/}
 
