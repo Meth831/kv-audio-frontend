@@ -43,6 +43,11 @@ export default function ProductOverview(){
                         <div className="mt-4 text-sm text-gray-600">
                             <span className="font-medium">Dimensions:</span> {product.dimensions}
                         </div>
+                        <button className="mt-4 bg-accent text-white px-4 py-2 rounded-md" onClick={()=>{
+                            addToCart(product.key, 1);
+                            toast.success("Added to Cart");
+                            console.log(loadCart())
+                        }}>Add to Cart</button>
                       </div>
                     </div>
             }
